@@ -16,7 +16,7 @@ def new_plant():
 def add_plant():
     if "user_id" not in session:
         return redirect("/")
-    is_valid = plants_model.plant.validate_plant(request.form)
+    is_valid = plants_model.Plant.validate_plant(request.form)
     if not is_valid:
         return redirect("/new/plant")
     else:
@@ -27,7 +27,7 @@ def add_plant():
             'date_planted':request.form["date_planted"],
             'user_id':session["user_id"]
         }
-        plants_model.plant.new_plant(data)
+        plants_model.Plant.new_plant(data)
         return redirect("/dash")
 
 #View a specific plant route 
@@ -36,7 +36,7 @@ def show_plant(id):
     if "user_id" not in session:
         return redirect("/")
     first_name = session["first_name"]
-    this_plant = plants_model.plant.view_plant(id)
+    this_plant = plants_model.Plant.view_plant(id)
     id = session["user_id"]
     return render_template("show_plant.html", first_name=first_name, plant=this_plant, id=id)
 
@@ -46,7 +46,7 @@ def edit_plant(id):
     if 'user_id' not in session:
         return redirect("/")
     first_name = session["first_name"]
-    plants = plants_model.plant.view_plant(id)
+    plants = plants_model.Plant.view_plant(id)
     id = session["user_id"]
     return render_template("edit_plant.html", plant=plants, first_name=first_name, id=id)
 
@@ -55,7 +55,7 @@ def edit_plant(id):
 def update_plant(id):
     if 'user_id' not in session:
         return redirect("/")
-    is_valid = plants_model.plant.validate_plant(request.form)
+    is_valid = plants_model.Plant.validate_plant(request.form)
     if not is_valid:
         return redirect(f"/edit/{id}")
     else:
@@ -66,7 +66,7 @@ def update_plant(id):
             'user_id':session["user_id"],
             'id':id
         }
-        plants_model.plant.update_plant(data)
+        plants_model.Plant.update_plant(data)
         return redirect("/dash")
 
 #Delete a plant route
@@ -74,6 +74,6 @@ def update_plant(id):
 def delete_plant(id):
     if 'user_id' not in session:
         return redirect("/")
-    plants_model.plant.delete_plant(id)
+    plants_model.Plant.delete_plant(id)
     return redirect(f"/user/account/{id}")
 

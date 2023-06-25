@@ -12,7 +12,7 @@ class Plant:
         self.info = data['info']
         self.user_id = data['user_id']
         self.date_planted = data['date_planted']
-        self.updated_at = data['updated_at']
+        self.date_updated = data['date_updated']
         self.owner = None
 
 #CREATE
@@ -43,7 +43,7 @@ class Plant:
                     'last_name':row["last_name"],
                     'email':row["email"],
                     'password':row["password"],
-                    'date_planted':row["users.date_planted"],
+                    'created_at':row["users.created_at"],
                     'updated_at':row["users.updated_at"]
                 }
                 this_plant.owner = users_model.User(data)
@@ -65,7 +65,7 @@ class Plant:
             'last_name':results[0]["last_name"],
             'email':results[0]["email"],
             'password':results[0]["password"],
-            'date_planted':results[0]["users.date_planted"],
+            'created_at':results[0]["users.created_at"],
             'updated_at':results[0]["users.updated_at"]
         }
         this_owner = users_model.User(data)
