@@ -24,7 +24,6 @@ def add_plant():
             'plant_name':request.form["plant_name"],
             'type':request.form["type"],
             'info':request.form["info"],
-            'date_planted':request.form["date_planted"],
             'user_id':session["user_id"]
         }
         plants_model.Plant.new_plant(data)

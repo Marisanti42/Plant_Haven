@@ -11,15 +11,15 @@ class Plant:
         self.type = data['type']
         self.info = data['info']
         self.user_id = data['user_id']
-        self.date_planted = data['date_planted']
-        self.date_updated = data['date_updated']
+        self.created_at = data['created_at']
+        self.updated_at = data['updated_at']
         self.owner = None
 
 #CREATE
     @classmethod
     def new_plant(cls,data):
         query="""INSERT INTO plants(plant_name, type, info, user_id)
-        VALUES (%(plant_names)s, %(type)s, %(info)s, %(user_id)s);"""
+        VALUES (%(plant_name)s, %(type)s, %(info)s, %(user_id)s);"""
         results = connectToMySQL(cls.db).query_db(query,data)
         return results
 
@@ -48,6 +48,7 @@ class Plant:
                 }
                 this_plant.owner = users_model.User(data)
                 plants.append(this_plant)
+        print(plants)
         return plants
 
     @classmethod
@@ -78,21 +79,33 @@ class Plant:
     def validate_plant(plant):
         print(plant)
         is_valid=True
-        if len(plant['plant_name']) < 5:
+        if len(plant['plant_name']) < 3:
             flash("Plant name must contain at least 3 characters.")
             is_valid = False
-        if len(plant['type']) < 2:
-            flash("Plant type must contain at least 3 characters.")
-            is_valid = False
+        if len(plant['type']) < 3:
+            flash("Plant type must contain at least 3 characters.")#            is_valid = False
         return is_valid
     
+
+#    @staticmethod
+#    def validate_plant(plant):
+#        print(plant)
+#        is_valid = True
+#        if len(plant.get('plant_name', '')) < 3:
+#            flash("Plant name must contain at least 3 characters.")
+#            is_valid = False
+#        if len(plant.get('type', '')) < 3:
+#            flash("Plant type must contain at least 3 characters.")
+#            is_valid = False
+#        return is_valid
+
 #UPDATE
     @classmethod
     def update_plant(cls,data):
         query = """UPDATE plants SET
         plant_name = %(plant_name)s,
         type = %(type)s,
-        info = %(info)s,
+        info = %(info)s
         WHERE id = %(id)s
         AND plants.user_id = %(user_id)s;"""
         results = connectToMySQL(cls.db).query_db(query, data)

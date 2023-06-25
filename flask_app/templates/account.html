@@ -37,7 +37,7 @@
             <tr>
                 <td>{{plant.plant_name}}</td>
                 <td>{{plant.type}}</td>
-                <td>{{plant.date_planted.strftime('%B %d, %Y')}}</td>
+                <td>{{plant.created_at.strftime('%B %d, %Y')}}</td>
                 <td>
                     <a href="/edit/{{plant.id}}">Edit</a>
                     <a href="/edit/{{plant.id}}/destroy">Delete</a>
