@@ -53,8 +53,8 @@ class User:
         elif not EMAIL_REGEX.match(user['email']):
             flash("Email address is invalid.")
             is_valid = False
-        if len(user['password']) < 8:
-            flash("Password must contain at least 8 characters.")
+        if len(user['password']) < 10:
+            flash("Password must contain at least 10 characters.")
             is_valid = False
         return is_valid
     

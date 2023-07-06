@@ -48,7 +48,7 @@ class Plant:
                 }
                 this_plant.owner = users_model.User(data)
                 plants.append(this_plant)
-        print(plants)
+        print("Get All")
         return plants
 
     @classmethod
@@ -83,7 +83,8 @@ class Plant:
             flash("Plant name must contain at least 3 characters.")
             is_valid = False
         if len(plant['type']) < 3:
-            flash("Plant type must contain at least 3 characters.")#            is_valid = False
+            flash("Plant type must contain at least 3 characters.")
+            is_valid = False
         return is_valid
     
 
