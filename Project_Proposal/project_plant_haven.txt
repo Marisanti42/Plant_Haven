@@ -1,0 +1,42 @@
+Group Members:
+Sarah Flynn-Dev: Front-End/Bootstrap
+Emely Pua: Front-End/Back-End
+Marisa Santiago: Front End-/Back-End
+
+Description: Plant Haven
+https://github.com/Marisanti42/Plant_Haven
+Project Plant Haven:Using Python/Flask/bootstrap
+Plant haven is a place where current and future gardeners can share/ log/ keep track of all the plants in their community. 
+Gives basic care instructions/ how to plant specific species. A place where plant lovers can shair their knowledge in being a plant enthusiast.
+This project would have a simple registration and login process with user variables:
+Users Table would include:
+User registration variables:
+-first name
+-last name
+-password
+-create password
+-email
+-with basic validation
+
+Login variables:
+-email
+-password
+-with basic validations
+
+Plant Table would include:
+-plant name
+-description
+-how to care for the plant 
+-benefits of plant
+-type of plant 
+-planted_at (created at)
+
+Gardeners can view others plants, but only logged user can edit /delete their plant.
+
+
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Haven</title>
+    <link rel="icon" type="image/x-icon" href="https://media.discordapp.net/attachments/545785889272496128/1124097196648833104/plant_haven_logo_green.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body class="p-3 d-flex justify-content-center flex-column">
+<!--Nav Bar-->
+    <div class="navbar d-flex justify-content-betweenp-3 text-white text-uppercase" style="background-color:#6A7B76;">
+        <div class="d-flex p-2">
+            <img src="https://media.discordapp.net/attachments/545785889272496128/1124097197290569788/plant_haven_logo_white.png" class="mx-2" width="40" height="40" alt="plant_haven_logo">
+            <h1>Plant Haven</h1>
+        </div>
+        <div class="d-flex flex-column pe-3">
+            <div class="d-flex flex-row">
+                <h2 class="row ms-4">Welcome, {{first_name}}!</h2>
+            </div>
+            <div class="d-flex flex-row me-5 justify-content-end">
+                <a class="btn btn-outline-light btn-sm border-2" href="/new/plant" style="background-color: #889691;">Add a Plant!</a>
+                <a class="btn btn-outline-light btn-sm border-2 ms-3" href="/user/account/{{id}}" style="background-color: #889691;">My Garden</a>
+                <a class="btn btn-outline-light btn-sm border-2 ms-3" href="/logout" style="background-color: #889691;">Logout</a>
+            </div>
+        </div>
+    </div>
+<!-- HR Style -->
+    <div class="container w-75 justify-content-center">
+        <hr style="border: 2px solid #889691; opacity: 100;" class="my-5">
+    </div>
+<!--Plants Table-->
+    <table class="table m-3 table-hover w-75 table-bordered border-3 table-success table-striped">
+        <thead class="bg-dark-subtle">
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Date Planted</th>
+                <th>Planted By</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for plant in plants %}
+            <tr>
+                <td>
+                    <a href="/show/{{plant.id}}">{{plant.plant_name}}</a>
+                </td>
+                <td>{{plant.type}}</td>
+                <td>{{plant.created_at}}</td>
+                <td>{{plant.owner.first_name}} {{plant.owner.last_name}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
